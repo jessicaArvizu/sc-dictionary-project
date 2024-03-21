@@ -26,7 +26,7 @@ function App() {
           GitHub
         </a>
         , and hosted on
-        <a href="" target="_blank" rel="noopener noreferrer">
+        <a href="www.google.com" target="_blank" rel="noopener noreferrer">
           {" "}
           Netlify
         </a>
