@@ -26,7 +26,7 @@ function App() {
           GitHub
         </a>
         , and hosted on
-        <a href="www.google.com" target="_blank" rel="noopener noreferrer">
+        <a href="https://superb-phoenix-f438fd.netlify.app/" target="_blank" rel="noopener noreferrer">
           {" "}
           Netlify
         </a>
