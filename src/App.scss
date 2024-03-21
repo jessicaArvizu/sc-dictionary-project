@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Yeseva+One&display=swap');
+
+$white: #fafafa;
+$indigo: #3F51B5;
+$indigo-100: #C5CAE9;
+$indigo-200: #9FA8DA;
+$indigo-300: #7986CB;
+$indigo-400: #5C6BC0;
+$gray-200: #EEEEEE;
+$gray-400: #BDBDBD;
+
+body {
+    background-color: $white;
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    margin: 0;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Yeseva One", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+a {
+    color: $indigo;
+
+    &:hover {
+        color: $indigo-300;
+    }
+}
+
+header {
+    text-align: center;
+}
+
+.main-container {
+    max-width: 600px;
+    border-radius: 24px;
+    min-height: 400px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 30px;
+
+    .search-form {
+        border-bottom: 1px solid $gray-200;
+        padding-bottom: 10px;
+
+        [type=search] {
+            outline-color: $indigo-100;
+            outline-offset: -2px;
+        }
+
+        .search-form__input {
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+        .search-form__button {
+            min-width: 100%;
+            background-color: $indigo-100;
+            color: $indigo;
+            min-height: 100%;
+
+            &:hover {
+                background-color: $indigo-200;
+            }
+        }
+    }
+}
+
+.result-container {
+    margin-top: 20px;
+    max-width: 100%;
+
+    .result-container__phonetics,
+    .result-container__part-of-speech {
+        color: $indigo;
+    }
+
+    .result-container__part-of-speech {
+        font-weight: bold;
+    }
+
+    .result-container__phonetics {
+        border-bottom: 1px solid $gray-200;
+        padding-bottom: 10px;
+    }
+
+    .result-container__definition {
+        margin-left: 20px;
+        list-style: disc outside none;
+        display: list-item;
+
+        span {
+            font-family: "Yeseva One", serif;
+            color: $gray-400;
+        }
+    }
+
+}
+
+footer {
+    margin-top: 30px;
+    padding: 30px 0 0 0;
+    text-align: center;
+    font-size: 12px;
+}
