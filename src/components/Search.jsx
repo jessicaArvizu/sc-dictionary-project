@@ -5,7 +5,6 @@ import Result from "./Result";
 export default function Search() {
     const [keyword, setKeyword] = useState("");
     const [results, setResults] = useState({});
-    const [loading, setLoading] = useState(false);
     const [formSubmitted, setFormSubmitted] = useState(false);
 
     useEffect(() => {
@@ -16,7 +15,6 @@ export default function Search() {
         const apiKey = 'd09a0fd0aaod658935ba4280ebb33t01';
         const baseUrl = `https://api.shecodes.io/dictionary/v1/define?word=${keyword}&key=${apiKey}`;
 
-        setLoading(true);
 
         axios.get(baseUrl)
             .then(response => {
@@ -37,7 +35,6 @@ export default function Search() {
                 console.error('Error fetching data:', error);
             })
             .finally(() => {
-                setLoading(false);
             });
     }, [keyword, formSubmitted]);
 
