@@ -123,6 +123,25 @@ header {
             color: $gray-400;
         }
     }
+
+    .image-row{
+        border-top: 1px solid $gray-200;
+        padding: 20px;
+        .card {
+            height: 100%;
+            img {
+                height: 200px;
+                width: 100%;
+                object-fit: cover;
+            }
+    
+            .card-text{
+                font-size: 12px;
+                font-family: "Josefin Sans", sans-serif;
+                color: $indigo-300;
+            }
+        }
+    }
 }
 
 footer {

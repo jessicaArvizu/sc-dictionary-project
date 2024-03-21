@@ -1,11 +1,12 @@
 import React from "react";
 
 export default function Result(props) {
-    if (props.results) {
+    if (props.results && props.pexelsData) {
         return (
             <div className="result-container">
                 <h1 className="result-container__word">{props.results.word}</h1>
                 <h2 className="result-container__phonetics">{props.results.phonetic}</h2>
+                {/* Displaying SheCodes data */}
                 {Array.isArray(props.results.meanings) ? (
                     props.results.meanings.map((meaning, index) => (
                         <div key={index} className="result__meaning">
@@ -22,6 +23,18 @@ export default function Result(props) {
                 ) : (
                     <div className="spinner-border text-primary" role="status"></div>
                 )}
+                <div className="row image-row">
+                    {props.pexelsData.map((image, index) => (
+                        <div key={index} className="col-lg-4 col-md-6 mb-4">
+                            <div className="card">
+                                <img src={image.src.medium} alt={`Pexels ${index + 1}`} className="card-img-top" />
+                                <div className="card-body">
+                                    <p className="card-text">Photo by {image.photographer}</p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         )
     } else {

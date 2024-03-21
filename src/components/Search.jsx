@@ -6,6 +6,7 @@ export default function Search() {
     const [keyword, setKeyword] = useState("");
     const [results, setResults] = useState({});
     const [formSubmitted, setFormSubmitted] = useState(false);
+    const [pexelsData, setPexelsData] = useState(null);
 
     useEffect(() => {
         if (!formSubmitted || keyword.trim() === "") {
@@ -13,9 +14,11 @@ export default function Search() {
         }
 
         const apiKey = 'd09a0fd0aaod658935ba4280ebb33t01';
+        const pexelsKey = 'Orgy9SRYIQOwwx3agcmbo1SiGYnnaLSnCiOFSWOmPy1a9AxNm25i57Ji';
         const baseUrl = `https://api.shecodes.io/dictionary/v1/define?word=${keyword}&key=${apiKey}`;
+        const pexelsBaseUrl = `https://api.pexels.com/v1/search?query=${keyword}&per_page=6`;
 
-
+        // SheCodes API call
         axios.get(baseUrl)
             .then(response => {
                 console.log(response.data);
@@ -23,21 +26,31 @@ export default function Search() {
                     definition: meaning.definition,
                     partOfSpeech: meaning.partOfSpeech,
                     example: meaning.example,
-                    synonyms:meaning.synonyms,
-                    antonyms:meaning.antonyms,
+                    synonyms: meaning.synonyms,
+                    antonyms: meaning.antonyms,
                 }));
 
                 setResults({
                     ready: true,
                     word: response.data.word,
                     phonetic: response.data.phonetic,
-                    meanings: meanings, // Set all meanings here
+                    meanings: meanings,
                 });
             })
             .catch(error => {
-                console.error('Error fetching data:', error);
+                console.error('Error fetching SheCodes data:', error);
+            });
+
+        // Pexels API call
+        axios.get(pexelsBaseUrl, { headers: { Authorization: pexelsKey } })
+            .then(response => {
+                console.log(response.data);
+                if (response.data.photos && response.data.photos.length > 0) {
+                    setPexelsData(response.data.photos.slice(0, 6));
+                }
             })
-            .finally(() => {
+            .catch(error => {
+                console.error('Error fetching Pexels data:', error);
             });
     }, [keyword, formSubmitted]);
 
@@ -70,7 +83,7 @@ export default function Search() {
                     </div>
                 </div>
             </form>
-            {formSubmitted && <Result results={results} />}
+            {formSubmitted && <Result results={results} pexelsData={pexelsData} />}
         </div>
     )
 }
