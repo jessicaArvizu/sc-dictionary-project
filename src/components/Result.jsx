@@ -11,6 +11,12 @@ export default function Result(props) {
                         <div key={index} className="result__meaning">
                             <p className="result-container__part-of-speech">{meaning.partOfSpeech}</p>
                             <p className="result-container__definition"><span>Meaning: </span>{meaning.definition}</p>
+                            {meaning.synonyms && (
+                                <p className="result-container__synonyms"><span>Synonyms: </span>{meaning.synonyms.join(", ")}</p>
+                            )}
+                            {meaning.antonyms && (
+                                <p className="result-container__antonyms"><span>Antonyms: </span>{meaning.antonyms.join(", ")}</p>
+                            )}
                         </div>
                     ))
                 ) : (

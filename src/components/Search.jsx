@@ -18,10 +18,13 @@ export default function Search() {
 
         axios.get(baseUrl)
             .then(response => {
+                console.log(response.data);
                 const meanings = response.data.meanings.map(meaning => ({
                     definition: meaning.definition,
                     partOfSpeech: meaning.partOfSpeech,
-                    example: meaning.example
+                    example: meaning.example,
+                    synonyms:meaning.synonyms,
+                    antonyms:meaning.antonyms,
                 }));
 
                 setResults({
